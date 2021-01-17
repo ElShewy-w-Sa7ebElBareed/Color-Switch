@@ -17,7 +17,7 @@ public class CircleShape {
 		this.CenterX = CenterX;
 		this.CenterY = CenterY;
 		this.Radius = Radius;
-		this.SpinSpeed *= speedLevel(Main.gameLevel);
+		this.SpinSpeed *= speedLevel(App.gameLevel);
 		arcShapes = new Arc[arcNums];
 		initialize();
 	}

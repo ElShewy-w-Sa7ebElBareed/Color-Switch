@@ -6,7 +6,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 
 
-public class Main extends Application {
+public class App extends Application {
 	final double length = 800, width = 400;
 	public static Level gameLevel = Level.EASY;
 	@Override
