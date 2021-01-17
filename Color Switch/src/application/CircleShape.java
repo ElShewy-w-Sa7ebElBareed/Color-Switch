@@ -81,8 +81,13 @@ public class CircleShape extends AppShape{
 		}
 	}
 	
+	
+	
+	//******************** need modify ************************\\
+	
 	private boolean isBallHit() {
-		return ((Math.abs(App.circle.getCenterY()-CenterY)<Radius+App.circle.getRadius())&&(Math.abs(App.circle.getCenterY()-CenterY)>Radius-App.circle.getRadius()));
+		double differenceY = Math.abs(App.circle.getCenterY()-CenterY);
+		return ((differenceY<Radius+App.circle.getRadius())&&(differenceY>Radius-App.circle.getRadius()));
 	}
 	
 	public void MoveWithSpeed(double stageStep) {
@@ -120,6 +125,7 @@ public class CircleShape extends AppShape{
 			}
 		});
 	}
+	
 	public Shape[] getShape() {
 		return arcShapes;
 	}
