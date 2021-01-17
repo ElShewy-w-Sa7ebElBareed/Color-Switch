@@ -6,14 +6,14 @@ import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.StrokeType;
 
-public class Circle {
+public class CircleShape {
 	private Arc[] arcShapes;
 	private Color[] arcColor = {Color.RED,Color.BLUE,Color.YELLOW,Color.GREEN};
 	private int arcNums = 4;
 	private double CenterX, CenterY, Radius,Angle = 0;
 	private int SpinSpeed = 5;
 	
-	public Circle(double CenterX,double CenterY,double Radius) {
+	public CircleShape(double CenterX,double CenterY,double Radius) {
 		this.CenterX = CenterX;
 		this.CenterY = CenterY;
 		this.Radius = Radius;
