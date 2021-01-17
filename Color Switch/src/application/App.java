@@ -24,7 +24,9 @@ public class App extends Application {
 			Group root = new Group();  
 			Scene scene = new Scene(root,width,length);
 			circle = AppBall.buildCircle(root, 200, 600, 20);
-		    root.getChildren().addAll(new CircleShape(width/2,150,90).getShape());
+		    //root.getChildren().addAll(new CircleShape(width/2,150,90).getShape());
+			levelShapes.add(new CircleShape(width/2,150,90));
+			levelShapes.add(new StarShape());
 		    for (AppShape shape : levelShapes) {
 		    	root.getChildren().addAll(shape.getShape());
 		    }
