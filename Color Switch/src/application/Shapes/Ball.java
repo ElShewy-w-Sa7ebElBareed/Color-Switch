@@ -1,4 +1,4 @@
-package application;
+package application.Shapes;
 
 import javafx.event.EventHandler;
 import javafx.scene.Group;

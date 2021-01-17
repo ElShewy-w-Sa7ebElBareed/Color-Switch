@@ -1,4 +1,4 @@
-package application;
+package application.Shapes;
 
 import javafx.scene.shape.Shape;
 

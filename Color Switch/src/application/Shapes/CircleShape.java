@@ -1,5 +1,7 @@
-package application;
+package application.Shapes;
 
+import application.Level;
+import application.App;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
