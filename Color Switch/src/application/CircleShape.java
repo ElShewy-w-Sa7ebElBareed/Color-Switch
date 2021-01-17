@@ -72,15 +72,11 @@ public class CircleShape extends AppShape{
 					for (int i = 0 ; i < arcNums ; i++) {
 						double tempAngle = arcShapes[i].getStartAngle()+SpinSpeed;
 						arcShapes[i].setStartAngle(tempAngle);
-						/*if (isBallHit()) {
-							System.out.println(i);
-							System.out.println(arcColor[i]);
-						}*/
+						if (CheckHit(arcShapes[i],App.circle)) {
+							System.out.println("Hit Succesfully with Arc: "+ i);
+						}
 					}
 				});
-				if (isBallHit()) {
-					System.out.println("HitShape");
-				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -88,13 +84,12 @@ public class CircleShape extends AppShape{
 	}
 	
 	
-	
 	//******************** need modify ************************\\
 	
-	private boolean isBallHit() {
+	/*private boolean isBallHit() {
 		double differenceY = Math.abs(App.circle.getCenterY()-CenterY);
 		return ((differenceY<Radius+App.circle.getRadius())&&(differenceY>Radius-App.circle.getRadius()));
-	}
+	}*/
 	
 	public void MoveWithSpeed(double stageStep) {
 		Thread t2 = new Thread(new Runnable() {
