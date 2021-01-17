@@ -1,21 +1,25 @@
 package application;
 
+import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.StrokeType;
 
 public class Circle {
-	Arc[] arcShapes;
-	Color[] arcColor = {Color.RED,Color.BLUE,Color.YELLOW,Color.GREEN};
-	int arcNums = 4;
-	double Angle = 0; 
+	private Arc[] arcShapes;
+	private Color[] arcColor = {Color.RED,Color.BLUE,Color.YELLOW,Color.GREEN};
+	private int arcNums = 4;
+	private double CenterX, CenterY, Radius,Angle = 0;
 	
 	public Circle(double CenterX,double CenterY,double Radius) {
+		this.CenterX = CenterX;
+		this.CenterY = CenterY;
+		this.Radius = Radius;
 		arcShapes = new Arc[arcNums];
 		for (int i = 0 ; i < arcNums ; i++) {
 			arcShapes[i] = new Arc();
-			setArc(arcShapes[i],CenterX,CenterY,Radius,Angle,arcColor[i]);
+			setArc(arcShapes[i],Angle,arcColor[i]);
 			Angle += 360/arcNums; 
 		}
 		Thread t = new Thread(new Runnable() {
@@ -27,7 +31,7 @@ public class Circle {
 		t.start();
 	}
 	
-	private void setArc(Arc arc,double CenterX,double CenterY,double Radius,double Angle,Color color) {
+	private void setArc(Arc arc,double Angle,Color color) {
 		arc.setCenterX(CenterX); 
 	    arc.setCenterY(CenterY); 
 	    arc.setRadiusX(Radius); 
@@ -45,14 +49,20 @@ public class Circle {
 		while (true) {
 			try {
 				wait(100);
-				for (int i = 0 ; i < arcNums ; i++) {
-					double tempAngle = arcShapes[i].getStartAngle()+5;
-					arcShapes[i].setStartAngle(tempAngle);
-				}
+				Platform.runLater(()->{
+					for (int i = 0 ; i < arcNums ; i++) {
+						double tempAngle = arcShapes[i].getStartAngle()+5;
+						arcShapes[i].setStartAngle(tempAngle);
+					}
+				});
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+	}
+	private synchronized void Move(double Stage) {
+		double start =CenterY;
+		
 	}
 	
 	public Arc[] getShape() {

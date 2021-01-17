@@ -7,14 +7,14 @@ import javafx.scene.Scene;
 
 
 public class Main extends Application {
-	final double length = 750, width = 400;
+	final double length = 800, width = 400;
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			Group root = new Group();  
 			Scene scene = new Scene(root,width,length);
-		    root.getChildren().addAll(new Circle(width/2,150,90).getShape());
+		    root.getChildren().addAll(new Circle(width/2,400,90).getShape());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
