@@ -46,7 +46,7 @@ public class Ball {
 			try {
 				System.out.println("Ahmed");
 				if(circle.getCenterY()<600) {
-				wait(100);
+				wait(50);
 				circle.setCenterY(circle.getCenterY()+downDistance);
 				System.out.println("Thread");}
 			} catch (InterruptedException e) {

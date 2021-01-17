@@ -20,7 +20,7 @@ public class App extends Application {
 		    root.getChildren().addAll(new CircleShape(width/2,150,90).getShape());
 		    root.getChildren().addAll(circle);
 		    b.Jump(40, scene, circle);
-			b.fall(5, circle);
+			b.fall(2, circle);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
