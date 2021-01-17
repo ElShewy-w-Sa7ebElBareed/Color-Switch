@@ -13,7 +13,7 @@ import javafx.scene.shape.Circle;
 public class App extends Application {
 	final double length = 800, width = 400;
 	public static Level gameLevel = Level.EASY;
-	ArrayList<AppShape> levelShapes = new ArrayList<AppShape>();
+	ArrayList<BasicShapes> levelShapes = new ArrayList<BasicShapes>();
 	public static Ball AppBall = new Ball();
 	//should be removed we need class Ball to do every thing with no need to declare circle here 
 	//in Addition jump and fall
@@ -26,12 +26,13 @@ public class App extends Application {
 			circle = AppBall.buildCircle(root, 200, 600, 20);
 		    //root.getChildren().addAll(new CircleShape(width/2,150,90).getShape());
 			levelShapes.add(new CircleShape(width/2,150,90));
-			levelShapes.add(new StarShape());
-		    for (AppShape shape : levelShapes) {
+			//levelShapes.add(new StarShape(width/2,150,20));
+		    for (BasicShapes shape : levelShapes) {
 		    	root.getChildren().addAll(shape.getShape());
 		    }
-		    root.getChildren().addAll(circle);
-		    AppBall.Jump(50, scene, circle);
+		    root.getChildren().addAll(circle,new StarShape(width/2,150,20).getShape());
+		    
+		    AppBall.Jump(90, scene, circle);
 		    AppBall.fall(4, circle);
 			primaryStage.setScene(scene);
 			primaryStage.show();
