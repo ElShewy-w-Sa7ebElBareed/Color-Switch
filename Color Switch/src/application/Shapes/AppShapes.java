@@ -4,6 +4,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
 public abstract class AppShapes {
+
 	public Color[] ShapeColor = { Color.RED, Color.BLUE, Color.YELLOW, Color.GREEN };
 
 	public abstract void Move(double stageStep);

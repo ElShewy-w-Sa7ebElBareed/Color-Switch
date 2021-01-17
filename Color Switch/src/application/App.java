@@ -3,6 +3,7 @@ package application;
 import java.util.ArrayList;
 
 import application.Shapes.*;
+import application.Shapes.Additional.ChangeColorBall;
 import application.Shapes.Additional.StarShape;
 import application.Shapes.Basic.BasicShapes;
 import application.Shapes.Basic.CircleShape;
@@ -33,8 +34,7 @@ public class App extends Application {
 		    for (BasicShapes shape : levelShapes) {
 		    	root.getChildren().addAll(shape.getShape());
 		    }
-		    root.getChildren().addAll(circle,new StarShape(width/2,150,20).getShape());
-		    
+		    root.getChildren().addAll(circle,new StarShape(width/2,150,20).getShape(),new ChangeColorBall(width/2, 400, 20).getShape());
 		    AppBall.Jump(90, scene, circle);
 		    AppBall.fall(4, circle);
 			primaryStage.setScene(scene);
