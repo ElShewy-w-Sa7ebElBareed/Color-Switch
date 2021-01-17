@@ -126,6 +126,11 @@ public class CircleShape extends BasicShapes{
 
 	@Override
 	public Shape getShapByColor(Color color) {
+		for (Arc arc : arcShapes) {
+			if (arc.getFill().equals(color)) {
+				return arc;
+			}
+		}
 		return null;
 	}
 
