@@ -3,6 +3,9 @@ package application;
 import java.util.ArrayList;
 
 import application.Shapes.*;
+import application.Shapes.Additional.StarShape;
+import application.Shapes.Basic.BasicShapes;
+import application.Shapes.Basic.CircleShape;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Group;

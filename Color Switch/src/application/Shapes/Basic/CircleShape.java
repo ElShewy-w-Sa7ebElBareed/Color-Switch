@@ -1,4 +1,4 @@
-package application.Shapes;
+package application.Shapes.Basic;
 
 import application.Level;
 import application.App;
