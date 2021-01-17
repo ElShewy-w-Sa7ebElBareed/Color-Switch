@@ -4,9 +4,10 @@ import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
+import javafx.scene.shape.Shape;
 import javafx.scene.shape.StrokeType;
 
-public class CircleShape {
+public class CircleShape{
 	private Arc[] arcShapes;
 	private Color[] arcColor = {Color.RED,Color.BLUE,Color.YELLOW,Color.GREEN};
 	private int arcNums = 4;
@@ -44,7 +45,7 @@ public class CircleShape {
 			}
 		});
 		t.start();
-		MoveWithThread(50);
+		MoveWithSpeed(100);
 	}
 	
 	private void setArc(Arc arc,double Angle,Color color) {
@@ -77,17 +78,17 @@ public class CircleShape {
 		}
 	}
 	
-	public void MoveWithThread(double stageStep) {
+	public void MoveWithSpeed(double stageStep) {
 		Thread t2 = new Thread(new Runnable() {
 			@Override
 			public void run() {
-				Move(stageStep);
+				MoveSpeed(stageStep);
 			}
 		});
 		t2.start();
 	}
 	
-	private synchronized void Move(double stageStep) {
+	private synchronized void MoveSpeed(double stageStep) {
 		double start = CenterY;
 		while ((CenterY-start)<stageStep) {
 			try {
@@ -104,7 +105,15 @@ public class CircleShape {
 		}
 	}
 	
-	public Arc[] getShape() {
+	public void Move (double stageStep) {
+		CenterY+=stageStep;
+		Platform.runLater(()->{
+			for (int i = 0 ; i < arcNums ; i++) {
+				arcShapes[i].setCenterY(CenterY);
+			}
+		});
+	}
+	public Shape[] getShape() {
 		return arcShapes;
 	}
 
