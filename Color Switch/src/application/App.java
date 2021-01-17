@@ -14,7 +14,8 @@ public class App extends Application {
 	public static Level gameLevel = Level.EASY;
 	ArrayList<AppShape> levelShapes = new ArrayList<AppShape>();
 	public static Ball AppBall = new Ball();
-	//should be removed
+	//should be removed we need class Ball to do every thing with no need to declare circle here 
+	//in Addition jump and fall
 	public static Circle circle;
 	@Override
 	public void start(Stage primaryStage) {
