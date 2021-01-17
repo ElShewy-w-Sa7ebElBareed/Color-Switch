@@ -11,14 +11,24 @@ public class Circle {
 	private Color[] arcColor = {Color.RED,Color.BLUE,Color.YELLOW,Color.GREEN};
 	private int arcNums = 4;
 	private double CenterX, CenterY, Radius,Angle = 0;
-	private int SpinSpeed = 6;
+	private int SpinSpeed = 5;
 	
 	public Circle(double CenterX,double CenterY,double Radius) {
 		this.CenterX = CenterX;
 		this.CenterY = CenterY;
 		this.Radius = Radius;
+		this.SpinSpeed *= speedLevel(Main.gameLevel);
 		arcShapes = new Arc[arcNums];
 		initialize();
+	}
+	
+	private int speedLevel(Level level) {
+		switch(level) {
+		case EASY : return 1;
+		case MEDIUM : return 2;
+		case HARD : return 3;
+		default : return 0;
+		}
 	}
 	
 	private void initialize() {
