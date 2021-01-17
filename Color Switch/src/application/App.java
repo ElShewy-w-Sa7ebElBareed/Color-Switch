@@ -13,20 +13,22 @@ public class App extends Application {
 	final double length = 800, width = 400;
 	public static Level gameLevel = Level.EASY;
 	ArrayList<AppShape> levelShapes = new ArrayList<AppShape>();
-	Ball b = new Ball();
+	public static Ball AppBall = new Ball();
+	//should be removed
+	public static Circle circle;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			Group root = new Group();  
 			Scene scene = new Scene(root,width,length);
-			Circle circle = b.buildCircle(root, 200, 600, 20);
+			circle = AppBall.buildCircle(root, 200, 600, 20);
 		    root.getChildren().addAll(new CircleShape(width/2,150,90).getShape());
 		    for (AppShape shape : levelShapes) {
 		    	root.getChildren().addAll(shape.getShape());
 		    }
 		    root.getChildren().addAll(circle);
-		    b.Jump(40, scene, circle);
-			b.fall(2, circle);
+		    AppBall.Jump(50, scene, circle);
+		    AppBall.fall(4, circle);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {

@@ -7,18 +7,18 @@ import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Shape;
 import javafx.scene.shape.StrokeType;
 
-public class CircleShape{
+public class CircleShape extends AppShape{
 	private Arc[] arcShapes;
 	private Color[] arcColor = {Color.RED,Color.BLUE,Color.YELLOW,Color.GREEN};
-	private int arcNums = 4;
+	private int arcNums = 4 , SpinSpeed;
 	private double CenterX, CenterY, Radius,Angle = 0;
-	private int SpinSpeed = 5;
+	private final int speedStage = 5 ;
 	
 	public CircleShape(double CenterX,double CenterY,double Radius) {
 		this.CenterX = CenterX;
 		this.CenterY = CenterY;
 		this.Radius = Radius;
-		this.SpinSpeed *= speedLevel(App.gameLevel);
+		this.SpinSpeed = speedStage * speedLevel(App.gameLevel);
 		arcShapes = new Arc[arcNums];
 		initialize();
 	}
@@ -70,12 +70,19 @@ public class CircleShape{
 					for (int i = 0 ; i < arcNums ; i++) {
 						double tempAngle = arcShapes[i].getStartAngle()+SpinSpeed;
 						arcShapes[i].setStartAngle(tempAngle);
+						if (isBallHit()) {
+							System.out.println(arcColor[i]);
+						}
 					}
 				});
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private boolean isBallHit() {
+		return ((Math.abs(App.circle.getCenterY()-CenterY)<Radius+App.circle.getRadius())&&(Math.abs(App.circle.getCenterY()-CenterY)>Radius-App.circle.getRadius()));
 	}
 	
 	public void MoveWithSpeed(double stageStep) {
