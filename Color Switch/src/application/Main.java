@@ -14,7 +14,7 @@ public class Main extends Application {
 		try {
 			Group root = new Group();  
 			Scene scene = new Scene(root,width,length);
-		    root.getChildren().addAll(new Circle(width/2,400,90).getShape());
+		    root.getChildren().addAll(new Circle(width/2,150,90).getShape());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
