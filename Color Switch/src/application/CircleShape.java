@@ -44,7 +44,7 @@ public class CircleShape {
 			}
 		});
 		t.start();
-		MoveWithThread(200);
+		MoveWithThread(50);
 	}
 	
 	private void setArc(Arc arc,double Angle,Color color) {
