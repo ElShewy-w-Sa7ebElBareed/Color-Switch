@@ -1,5 +1,6 @@
 package application.Shapes;
 
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
 
@@ -10,6 +11,7 @@ public class StarShape extends AppShape {
 	
 	public StarShape() {
 		polygon = new Polygon(handlePoints(CenterX,CenterY,TopLength));	
+		polygon.setFill(Color.GOLD);
 	}
 	
 	
