@@ -13,6 +13,8 @@ public class CircleShape extends AppShape{
 	private int arcNums = 4 , SpinSpeed;
 	private double CenterX, CenterY, Radius,Angle = 0;
 	private final int speedStage = 5 ;
+	private final double StrokeWidth = 15;
+	private final Color BackgroundColor = Color.WHITE;
 	
 	public CircleShape(double CenterX,double CenterY,double Radius) {
 		this.CenterX = CenterX;
@@ -54,11 +56,11 @@ public class CircleShape extends AppShape{
 	    arc.setRadiusX(Radius); 
 	    arc.setRadiusY(Radius); 
 	    arc.setStartAngle(Angle); 
-	    arc.setLength(90);
-	    arc.setFill(Color.WHITE);
+	    arc.setLength(360/arcNums);
+	    arc.setFill(BackgroundColor);
 	    arc.setStroke(color);
 	    arc.setStrokeType(StrokeType.INSIDE);
-	    arc.setStrokeWidth(15);
+	    arc.setStrokeWidth(StrokeWidth);
 	    arc.setType(ArcType.OPEN);
 	}
 	
@@ -70,11 +72,15 @@ public class CircleShape extends AppShape{
 					for (int i = 0 ; i < arcNums ; i++) {
 						double tempAngle = arcShapes[i].getStartAngle()+SpinSpeed;
 						arcShapes[i].setStartAngle(tempAngle);
-						if (isBallHit()) {
+						/*if (isBallHit()) {
+							System.out.println(i);
 							System.out.println(arcColor[i]);
-						}
+						}*/
 					}
 				});
+				if (isBallHit()) {
+					System.out.println("HitShape");
+				}
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
