@@ -52,7 +52,7 @@ public class CircleShape extends BasicShapes{
 			}
 		});
 		t.start();
-		MoveWithSpeed(100);
+		Move(100);
 	}
 	
 	private void setArc(Arc arc,double Angle,Color color) {
@@ -88,7 +88,18 @@ public class CircleShape extends BasicShapes{
 		}
 	}
 	
-	public void MoveWithSpeed(double stageStep) {
+	/*public void MoveWithSpeed(double stageStep) {
+		Thread t2 = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				MoveSpeed(stageStep);
+			}
+		});
+		t2.start();
+	}*/
+	
+	@Override
+	public void Move(double stageStep) {
 		Thread t2 = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -102,7 +113,7 @@ public class CircleShape extends BasicShapes{
 		double start = CenterY;
 		while ((CenterY-start)<stageStep) {
 			try {
-				wait(10);
+				wait(5);
 				CenterY++;
 				Platform.runLater(()->{
 					for (int i = 0 ; i < arcNums ; i++) {
@@ -115,18 +126,14 @@ public class CircleShape extends BasicShapes{
 		}
 	}
 	
-	public void Move (double stageStep) {
+	/*public void Move (double stageStep) {
 		CenterY+=stageStep;
 		Platform.runLater(()->{
 			for (int i = 0 ; i < arcNums ; i++) {
 				arcShapes[i].setCenterY(CenterY);
 			}
 		});
-	}
-	
-	public Shape[] getShape() {
-		return arcShapes;
-	}
+	}*/
 
 	@Override
 	public ArrayList<Shape> getShapesWithOppositeColor(Paint paint) {
@@ -138,5 +145,11 @@ public class CircleShape extends BasicShapes{
 		}
 		return shapes;
 	}
+
+	@Override
+	public Shape[] getShape() {
+		return arcShapes;
+	}
+
 
 }
