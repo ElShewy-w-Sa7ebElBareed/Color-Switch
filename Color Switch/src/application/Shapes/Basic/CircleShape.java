@@ -1,9 +1,13 @@
 package application.Shapes.Basic;
 
 import application.Level;
+
+import java.util.ArrayList;
+
 import application.App;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Arc;
 import javafx.scene.shape.ArcType;
 import javafx.scene.shape.Shape;
@@ -73,8 +77,8 @@ public class CircleShape extends BasicShapes{
 					for (int i = 0 ; i < arcNums ; i++) {
 						double tempAngle = arcShapes[i].getStartAngle()+SpinSpeed;
 						arcShapes[i].setStartAngle(tempAngle);
-						if (CheckHit(arcShapes[i],App.circle)) {
-							System.out.println("Hit Succesfully with Arc: "+ i);
+						if (CheckHit(App.circle,getShapesWithOppositeColor(App.circle.getFill()))) {
+							System.out.println("game Over inside the class");
 						}
 					}
 				});
@@ -125,13 +129,14 @@ public class CircleShape extends BasicShapes{
 	}
 
 	@Override
-	public Shape getShapByColor(Color color) {
+	public ArrayList<Shape> getShapesWithOppositeColor(Paint paint) {
+		ArrayList<Shape> shapes = new ArrayList<Shape>();
 		for (Arc arc : arcShapes) {
-			if (arc.getFill().equals(color)) {
-				return arc;
+			if (!arc.getStroke().equals(paint)) {
+				shapes.add(arc);
 			}
 		}
-		return null;
+		return shapes;
 	}
 
 }
