@@ -1,5 +1,6 @@
 package application.Shapes;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -8,6 +9,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class Ball {
+	boolean Top = false;
 	public Circle buildCircle(Group group, double CenterX, double centerY, double raduis) {
 		Circle circle = new Circle();
 		circle.setCenterX(CenterX);
@@ -21,13 +23,39 @@ public class Ball {
 		EventHandler<MouseEvent> MouseClick = new EventHandler<MouseEvent>() {
 			@Override
 			public void handle(MouseEvent e) {
-				circle.setCenterY(circle.getCenterY() - upDistance);
-				System.out.println(circle.getCenterY());
+				System.out.println("before");
+				Thread t2 = new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						//System.out.println("Inn");
+						Up(upDistance, circle);
+					}
+				});
+				t2.start();
+				System.out.println("after");
 			}
 		};
 		scene.addEventFilter(MouseEvent.MOUSE_CLICKED, MouseClick);
 	}
-
+	
+	private synchronized void Up(int upDistance, Circle circle) {
+		System.out.println("In");
+		double start = circle.getCenterY() ;
+		Top = true;
+		while ((circle.getCenterY()-start) < upDistance) {
+			try {
+				wait(10);
+				
+				Platform.runLater(()->{
+					circle.setCenterY(circle.getCenterY() + 1) ;
+				});
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public void fall(int downDistance, Circle circle) {
 		Thread t = new Thread(new Runnable() {
 
@@ -39,12 +67,11 @@ public class Ball {
 		t.start();
 	}
 
-	private synchronized Object Down(int downDistance, Circle circle) {
+	private synchronized void Down(int downDistance, Circle circle) {
 		while (true) {
 			try {
-				// System.out.println("Ahmed");
 				System.out.print("");
-				if (circle.getCenterY() < 600) {
+				if (circle.getCenterY() < 600 && !Top) {
 					wait(50);
 					circle.setCenterY(circle.getCenterY() + downDistance);
 					//System.out.println("Thread");
