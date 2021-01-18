@@ -5,8 +5,7 @@ import java.util.ArrayList;
 import application.Shapes.*;
 import application.Shapes.Additional.ChangeColorBall;
 import application.Shapes.Additional.StarShape;
-import application.Shapes.Basic.BasicShapes;
-import application.Shapes.Basic.CircleShape;
+import application.Shapes.Basic.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Group;
@@ -30,6 +29,8 @@ public class App extends Application {
 			circle = AppBall.buildCircle(root, 200, 600, 20);
 		    //root.getChildren().addAll(new CircleShape(width/2,150,90).getShape());
 			levelShapes.add(new CircleShape(width/2,150,90));
+			levelShapes.add(new LineShape(200));
+			levelShapes.add(new StairsShape(400));
 			//levelShapes.add(new StarShape(width/2,150,20));
 		    for (BasicShapes shape : levelShapes) {
 		    	root.getChildren().addAll(shape.getShape());
