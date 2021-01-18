@@ -5,13 +5,7 @@ import java.util.ArrayList;
 import application.Shapes.*;
 import application.Shapes.Additional.ChangeColorBall;
 import application.Shapes.Additional.StarShape;
-<<<<<<< HEAD
 import application.Shapes.Basic.*;
-=======
-import application.Shapes.Basic.BasicShapes;
-import application.Shapes.Basic.CircleShape;
-import application.Shapes.Basic.RectangleShapes;
->>>>>>> branch 'master' of https://github.com/ElShewy-w-Sa7ebElBareed/Color-Switch.git
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Group;
@@ -40,14 +34,14 @@ public class App extends Application {
 			levelShapes.add(new LineShape(200));
 			levelShapes.add(new StairsShape(400));
 			//levelShapes.add(new StarShape(width/2,150,20));
-		   /* for (BasicShapes shape : levelShapes) {
+		    for (BasicShapes shape : levelShapes) {
 		    	root.getChildren().addAll(shape.getShape());
-		    }*/
-		   // root.getChildren().addAll(circle,new StarShape(width/2,150,20).getShape(),new ChangeColorBall(width/2, 400, 20).getShape());
-			root.getChildren().addAll(circle);
+		    }
+		    root.getChildren().addAll(circle,new StarShape(width/2,150,20).getShape(),new ChangeColorBall(width/2, 400, 20).getShape());
+			//root.getChildren().addAll(circle);
 			root.getChildren().addAll(r.getShape());
-		    AppBall.Jump(90, scene, circle);
-		    AppBall.fall(4, circle);
+		    AppBall.Jump(50, scene, circle);
+		    //AppBall.fall(2, circle);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
