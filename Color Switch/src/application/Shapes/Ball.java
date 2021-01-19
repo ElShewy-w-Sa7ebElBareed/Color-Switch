@@ -1,23 +1,29 @@
 package application.Shapes;
 
+import application.Shapes.Additional.AdditionalShapes;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Shape;
 
-public class Ball {
+public class Ball extends AdditionalShapes {
 	boolean Top = false;
 	int clicks=0;
 	Object LOCK = new Object();
-	public Circle buildCircle(Group group, double CenterX, double centerY, double raduis) {
+	private Circle circle;
+	public Ball(Scene scene,double CenterX, double centerY, double raduis,Color color) {
+		circle=buildCircle(CenterX, centerY, raduis, color);
+		Jump(50, scene, circle);		
+	}
+	public Circle buildCircle(double CenterX, double centerY, double raduis,Color color) {
 		Circle circle = new Circle();
 		circle.setCenterX(CenterX);
 		circle.setCenterY(centerY);
 		circle.setRadius(raduis);
-		circle.setFill(Color.RED);
+		circle.setFill(color);
 		return circle;
 	}
 
@@ -50,7 +56,7 @@ public class Ball {
 		double start = circle.getCenterY() ;
 		while (start-(circle.getCenterY()) < upDistance) {
 			try {
-				LOCK.wait(20);
+				LOCK.wait(10);
 				
 				Platform.runLater(()->{
 					circle.setCenterY(circle.getCenterY() - 2) ;
@@ -114,6 +120,17 @@ public class Ball {
 			}
 		}
         }
+	}
+
+	@Override
+	public Shape getShape() {
+		return circle;
+	}
+	
+	@Override
+	public void Move(double stageStep) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
