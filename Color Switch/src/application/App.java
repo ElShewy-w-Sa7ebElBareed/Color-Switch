@@ -33,7 +33,7 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			String path = "C:\\Users\\Ahmed Ashraf\\git\\Color-Switch\\Color Switch\\src\\sound.mp3";
+			String path = "sound.mp3";
 	        Media pick = new Media(new File(path).toURI().toString()); // replace this with your own audio file
 	        MediaPlayer player = new MediaPlayer(pick);
 
