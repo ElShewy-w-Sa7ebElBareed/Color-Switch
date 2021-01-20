@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 
 
 public class App extends Application {
@@ -21,14 +20,16 @@ public class App extends Application {
 	public static RectangleShapes r = new RectangleShapes();
 	//should be removed we need class Ball to do every thing with no need to declare circle here 
 	//in Addition jump and fall
-	public static Circle circle;
+	//public static Circle circle;
+	public static Ball ball;
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			Group root = new Group();  
-			Scene scene = new Scene(root,width,length);
-			Ball ball = new Ball(scene, 200, 600, 5, Color.RED);
-			circle = (Circle) ball.getShape();
+			Scene scene = new Scene(root,width,length, Color.BLACK);
+			ball = new Ball(scene, 200, 600, 10, Color.RED);
+			
+			//circle = (Circle) ball.getShape();
 		    //root.getChildren().addAll(new CircleShape(width/2,150,90).getShape());
 			levelShapes.add(new CircleShape(width/2,150,90));
 			levelShapes.add(new LineShape(200));

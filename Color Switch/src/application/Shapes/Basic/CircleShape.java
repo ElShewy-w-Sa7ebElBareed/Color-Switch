@@ -77,7 +77,7 @@ public class CircleShape extends BasicShapes{
 					for (int i = 0 ; i < arcNums ; i++) {
 						double tempAngle = arcShapes[i].getStartAngle()+SpinSpeed;
 						arcShapes[i].setStartAngle(tempAngle);
-						if (CheckHit(App.circle,getShapesWithOppositeColor(App.circle.getFill()))) {
+						if (CheckHit(App.ball.getShape(),getShapesWithOppositeColor(App.ball.getShape().getFill()))) {
 							System.out.println("game Over inside the class");
 						}
 					}

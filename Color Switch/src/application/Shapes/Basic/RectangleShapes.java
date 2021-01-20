@@ -51,7 +51,7 @@ public class RectangleShapes extends BasicShapes {
 					rect2.getTransforms().add(rotate);
 				    rect3.getTransforms().add(rotate);
 					rect4.getTransforms().add(rotate);
-					if (CheckHit(App.circle,getShapesWithOppositeColor(App.circle.getFill()))) {
+					if (CheckHit(App.ball.getShape(),getShapesWithOppositeColor(App.ball.getShape().getFill()))) {
 						System.out.println("game Over inside the class");
 					}
 				});
