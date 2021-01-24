@@ -1,6 +1,9 @@
 package application.colorSwitch.shapes.basic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import application.colorSwitch.shapes.additional.StarShape;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -11,6 +14,7 @@ import javafx.scene.shape.StrokeType;
 
 public class CircleShape extends BasicShapes{
 	private Arc[] arcShapes;
+	private StarShape star; 
 	private int SpinSpeed;
 	private double CenterX, CenterY, Radius,Angle = 0;
 	private final int speedStage = 5 ;
@@ -23,6 +27,7 @@ public class CircleShape extends BasicShapes{
 		this.Radius = Radius;
 		this.SpinSpeed = speedStage * speedLevel();
 		arcShapes = new Arc[ShapeNums];
+		star = new StarShape(CenterY);
 		initialize();
 	}
 	
@@ -80,6 +85,7 @@ public class CircleShape extends BasicShapes{
 				MoveSpeed(stageStep);
 			}
 		});
+		star.Move(stageStep);
 		t2.start();
 	}
 	
@@ -107,8 +113,9 @@ public class CircleShape extends BasicShapes{
 
 	@Override
 	public Shape[] getShape() {
-		return arcShapes;
+		ArrayList<Shape> shapes = new ArrayList<>(Arrays.asList(arcShapes));
+		shapes.add(star.getShape());
+		return shapes.toArray(new Shape[0]);
 	}
-
 
 }
