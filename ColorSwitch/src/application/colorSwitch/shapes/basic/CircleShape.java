@@ -1,7 +1,6 @@
 package application.colorSwitch.shapes.basic;
 
 import java.util.ArrayList;
-import application.colorSwitch.data.Level;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -22,18 +21,9 @@ public class CircleShape extends BasicShapes{
 		this.CenterX = CenterX;
 		this.CenterY = CenterY;
 		this.Radius = Radius;
-		this.SpinSpeed = speedStage * speedLevel(gameLevel);
+		this.SpinSpeed = speedStage * speedLevel();
 		arcShapes = new Arc[arcNums];
 		initialize();
-	}
-	
-	private int speedLevel(Level level) {
-		switch(level) {
-		case EASY : return 1;
-		case MEDIUM : return 2;
-		case HARD : return 3;
-		default : return 0;
-		}
 	}
 	
 	private void initialize() {
@@ -67,16 +57,13 @@ public class CircleShape extends BasicShapes{
 	}
 	
 	private synchronized void Spin() {
-		while (true) {
+		while (CenterY < 1200) {
 			try {
 				wait(50);
 				Platform.runLater(()->{
 					for (int i = 0 ; i < arcNums ; i++) {
 						double tempAngle = arcShapes[i].getStartAngle()+SpinSpeed;
 						arcShapes[i].setStartAngle(tempAngle);
-						/*if (CheckHit(App.ball.getShape(),getShapesWithOppositeColor(App.ball.getShape().getFill()))) {
-							System.out.println("game Over inside the class");
-						}*/
 					}
 				});
 			} catch (InterruptedException e) {
@@ -84,16 +71,6 @@ public class CircleShape extends BasicShapes{
 			}
 		}
 	}
-	
-	/*public void MoveWithSpeed(double stageStep) {
-		Thread t2 = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				MoveSpeed(stageStep);
-			}
-		});
-		t2.start();
-	}*/
 	
 	@Override
 	public void Move(double stageStep) {
@@ -122,15 +99,6 @@ public class CircleShape extends BasicShapes{
 			}
 		}
 	}
-	
-	/*public void Move (double stageStep) {
-		CenterY+=stageStep;
-		Platform.runLater(()->{
-			for (int i = 0 ; i < arcNums ; i++) {
-				arcShapes[i].setCenterY(CenterY);
-			}
-		});
-	}*/
 
 	@Override
 	public ArrayList<Shape> getShapesWithOppositeColor(Paint paint) {

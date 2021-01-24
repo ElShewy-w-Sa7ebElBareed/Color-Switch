@@ -6,11 +6,7 @@ import application.colorSwitch.data.AppData;
 import application.colorSwitch.shapes.Ball;
 import application.colorSwitch.shapes.additional.ChangeColorBall;
 import application.colorSwitch.shapes.additional.StarShape;
-import application.colorSwitch.shapes.basic.BasicShapes;
-import application.colorSwitch.shapes.basic.CircleShape;
-import application.colorSwitch.shapes.basic.LineShape;
-import application.colorSwitch.shapes.basic.RectangleShapes;
-import application.colorSwitch.shapes.basic.StairsShape;
+import application.colorSwitch.shapes.basic.*;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -23,6 +19,8 @@ import javafx.scene.paint.Color;
 public class ColorSwitchGame extends AppData {
 
 	private Scene gameScene;
+	
+	//the next two lines must be removed
 	ArrayList<BasicShapes> levelShapes = new ArrayList<BasicShapes>();
 	public static RectangleShapes r = new RectangleShapes();
 	public ColorSwitchGame() {

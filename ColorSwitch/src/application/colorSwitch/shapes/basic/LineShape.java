@@ -1,7 +1,6 @@
 package application.colorSwitch.shapes.basic;
 
 import java.util.ArrayList;
-import application.colorSwitch.data.Level;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -11,7 +10,7 @@ import javafx.scene.shape.StrokeType;
 
 public class LineShape extends BasicShapes{
 	private final double StrokeWidth = 15,lineLength = 150;
-	private final int width = 400,lineNums = 4,SpeedStage = 4;
+	private final int lineNums = 4,SpeedStage = 4;
 	private int SpinSpeed;
 	private Line[] lineShapes ;
 	private double y ;
@@ -19,23 +18,14 @@ public class LineShape extends BasicShapes{
 	public LineShape (double y) {
 		this.y = y;
 		lineShapes = new Line[lineNums];
-		this.SpinSpeed = SpeedStage * speedLevel(gameLevel);
+		this.SpinSpeed = SpeedStage * speedLevel();
 		initialize(y);
-	}
-	
-	private int speedLevel(Level level) {
-		switch(level) {
-		case EASY : return 1;
-		case MEDIUM : return 2;
-		case HARD : return 3;
-		default : return 0;
-		}
 	}
 	
 	private void initialize(double y ){
 		for (int i = 0 ; i < lineNums;i++) {
 			lineShapes[i] = new Line();
-			setLine(lineShapes[i],width-(i+1)*lineLength,AppColor[i]);
+			setLine(lineShapes[i],ScreenWidth-(i+1)*lineLength,AppColor[i]);
 		}
 		Thread t = new Thread(new Runnable() {
 			@Override
@@ -64,8 +54,8 @@ public class LineShape extends BasicShapes{
 				Platform.runLater(()->{
 					for (int i = 0 ; i < lineNums ; i++) {
 						double tempStartX = lineShapes[i].getStartX()+SpinSpeed;
-						if (tempStartX >=  width) {
-							tempStartX = -200+StrokeWidth/2;
+						if (tempStartX >=  ScreenWidth) {
+							tempStartX = ScreenWidth-lineNums*lineLength+StrokeWidth/2;
 						}
 						lineShapes[i].setStartX(tempStartX+StrokeWidth/2);
 						lineShapes[i].setEndX(tempStartX+lineLength-StrokeWidth/2);
