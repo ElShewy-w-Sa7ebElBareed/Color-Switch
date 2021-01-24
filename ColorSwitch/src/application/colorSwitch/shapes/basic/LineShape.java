@@ -1,6 +1,9 @@
 package application.colorSwitch.shapes.basic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import application.colorSwitch.shapes.additional.StarShape;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -13,12 +16,14 @@ public class LineShape extends BasicShapes{
 	private final int SpeedStage = 4;
 	private int SpinSpeed;
 	private Line[] lineShapes ;
+	private StarShape star;
 	private double y ;
 	
 	public LineShape (double y) {
 		this.y = y;
 		lineShapes = new Line[ShapeNums];
 		this.SpinSpeed = SpeedStage * speedLevel();
+		star = new StarShape(y-2*StrokeWidth);
 		initialize(y);
 	}
 	
@@ -76,6 +81,7 @@ public class LineShape extends BasicShapes{
 				MoveSpeed(stageStep);
 			}
 		});
+		star.Move(stageStep);
 		t2.start();
 	}
 	
@@ -104,7 +110,9 @@ public class LineShape extends BasicShapes{
 
 	@Override
 	public Shape[] getShape() {
-		return lineShapes;
+		ArrayList<Shape> shapes = new ArrayList<>(Arrays.asList(lineShapes));
+		shapes.add(star.getShape());
+		return shapes.toArray(new Shape[0]);
 	}
 
 }

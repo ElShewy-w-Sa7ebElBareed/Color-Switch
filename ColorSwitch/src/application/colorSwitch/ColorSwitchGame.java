@@ -35,12 +35,12 @@ public class ColorSwitchGame extends AppData {
 		ImageView vm = new ImageView(background);
 		root.getChildren().addAll(vm);
 		levelShapes.add(new CircleShape(ScreenWidth/2,150,90));
-		levelShapes.add(new LineShape(200));
+		levelShapes.add(new LineShape(250));
 		levelShapes.add(new StairsShape(400));
 	    for (BasicShapes shape : levelShapes) {
 	    	root.getChildren().addAll(shape.getShape());
 	    }
-	    root.getChildren().addAll(new StarShape(150).getShape(),new ChangeColorBall(ScreenWidth/2, 400, 20).getShape());
+	    //root.getChildren().addAll(new StarShape(150).getShape(),new ChangeColorBall(ScreenWidth/2, 400, 20).getShape());
 		root.getChildren().addAll(AppBall.getShape());
 		root.getChildren().addAll(r.getShape());
 		// Play the media once the stage is shown
