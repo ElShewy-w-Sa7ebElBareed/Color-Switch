@@ -16,7 +16,7 @@ public class CircleShape extends BasicShapes{
 	private double CenterX, CenterY, Radius,Angle = 0;
 	private final int speedStage = 5 ;
 	private final double StrokeWidth = 15;
-	private final Color BackgroundColor = Color.WHITE;
+	private final Color BackgroundColor = Color.BLACK;
 	
 	public CircleShape(double CenterX,double CenterY,double Radius) {
 		this.CenterX = CenterX;

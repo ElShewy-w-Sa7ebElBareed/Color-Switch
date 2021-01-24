@@ -10,6 +10,7 @@ public class App extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			primaryStage.setScene(new ColorSwitchGame().getGameScene());
+			primaryStage.setResizable(false);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
