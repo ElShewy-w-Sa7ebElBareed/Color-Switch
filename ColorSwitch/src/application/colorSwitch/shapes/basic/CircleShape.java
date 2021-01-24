@@ -11,7 +11,7 @@ import javafx.scene.shape.StrokeType;
 
 public class CircleShape extends BasicShapes{
 	private Arc[] arcShapes;
-	private int arcNums = 4 , SpinSpeed;
+	private int SpinSpeed;
 	private double CenterX, CenterY, Radius,Angle = 0;
 	private final int speedStage = 5 ;
 	private final double StrokeWidth = 15;
@@ -22,15 +22,15 @@ public class CircleShape extends BasicShapes{
 		this.CenterY = CenterY;
 		this.Radius = Radius;
 		this.SpinSpeed = speedStage * speedLevel();
-		arcShapes = new Arc[arcNums];
+		arcShapes = new Arc[ShapeNums];
 		initialize();
 	}
 	
 	private void initialize() {
-		for (int i = 0 ; i < arcNums ; i++) {
+		for (int i = 0 ; i < ShapeNums ; i++) {
 			arcShapes[i] = new Arc();
 			setArc(arcShapes[i],Angle,AppColor[i]);
-			Angle += 360/arcNums; 
+			Angle += 360/ShapeNums; 
 		}
 		Thread t = new Thread(new Runnable() {
 			@Override
@@ -48,7 +48,7 @@ public class CircleShape extends BasicShapes{
 	    arc.setRadiusX(Radius); 
 	    arc.setRadiusY(Radius); 
 	    arc.setStartAngle(Angle); 
-	    arc.setLength(360/arcNums);
+	    arc.setLength(360/ShapeNums);
 	    arc.setFill(BackgroundColor);
 	    arc.setStroke(color);
 	    arc.setStrokeType(StrokeType.INSIDE);
@@ -61,7 +61,7 @@ public class CircleShape extends BasicShapes{
 			try {
 				wait(50);
 				Platform.runLater(()->{
-					for (int i = 0 ; i < arcNums ; i++) {
+					for (int i = 0 ; i < ShapeNums ; i++) {
 						double tempAngle = arcShapes[i].getStartAngle()+SpinSpeed;
 						arcShapes[i].setStartAngle(tempAngle);
 					}
@@ -90,7 +90,7 @@ public class CircleShape extends BasicShapes{
 				wait(5);
 				CenterY++;
 				Platform.runLater(()->{
-					for (int i = 0 ; i < arcNums ; i++) {
+					for (int i = 0 ; i < ShapeNums ; i++) {
 						arcShapes[i].setCenterY(CenterY);
 					}
 				});

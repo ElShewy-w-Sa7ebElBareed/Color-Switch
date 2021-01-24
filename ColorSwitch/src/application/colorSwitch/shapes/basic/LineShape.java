@@ -10,20 +10,20 @@ import javafx.scene.shape.StrokeType;
 
 public class LineShape extends BasicShapes{
 	private final double StrokeWidth = 15,lineLength = 150;
-	private final int lineNums = 4,SpeedStage = 4;
+	private final int SpeedStage = 4;
 	private int SpinSpeed;
 	private Line[] lineShapes ;
 	private double y ;
 	
 	public LineShape (double y) {
 		this.y = y;
-		lineShapes = new Line[lineNums];
+		lineShapes = new Line[ShapeNums];
 		this.SpinSpeed = SpeedStage * speedLevel();
 		initialize(y);
 	}
 	
 	private void initialize(double y ){
-		for (int i = 0 ; i < lineNums;i++) {
+		for (int i = 0 ; i < ShapeNums;i++) {
 			lineShapes[i] = new Line();
 			setLine(lineShapes[i],ScreenWidth-(i+1)*lineLength,AppColor[i]);
 		}
@@ -52,10 +52,10 @@ public class LineShape extends BasicShapes{
 			try {
 				wait(50);
 				Platform.runLater(()->{
-					for (int i = 0 ; i < lineNums ; i++) {
+					for (int i = 0 ; i < ShapeNums ; i++) {
 						double tempStartX = lineShapes[i].getStartX()+SpinSpeed;
 						if (tempStartX >=  ScreenWidth) {
-							tempStartX = ScreenWidth-lineNums*lineLength+StrokeWidth/2;
+							tempStartX = ScreenWidth-ShapeNums*lineLength+StrokeWidth/2;
 						}
 						lineShapes[i].setStartX(tempStartX+StrokeWidth/2);
 						lineShapes[i].setEndX(tempStartX+lineLength-StrokeWidth/2);
