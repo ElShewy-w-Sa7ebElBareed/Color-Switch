@@ -14,11 +14,13 @@ public class StairsShape extends BasicShapes{
 	private final int SpeedStage = 4;
 	private int SpinSpeed;
 	private Line[] lineShapes ;
+	private double y;
 	
 	public StairsShape (double y) {
+		this.y = y;
 		lineShapes = new Line[ShapeNums];
 		this.SpinSpeed = SpeedStage * speedLevel(gameLevel);
-		initialize(y);
+		initialize();
 	}
 	
 	private int speedLevel(Level level) {
@@ -30,7 +32,7 @@ public class StairsShape extends BasicShapes{
 		}
 	}
 	
-	private void initialize(double y ){
+	private void initialize(){
 		for (int i = 0 ; i < ShapeNums;i++) {
 			lineShapes[i] = new Line();
 			setLine(lineShapes[i],ScreenWidth-(i+1)*lineLength,y+StrokeWidth*i,AppColor[i]);
@@ -42,6 +44,7 @@ public class StairsShape extends BasicShapes{
 			}
 		});
 		t.start();
+		Move(100);
 	}
 	
 	private void setLine(Line line,double startX,double y,Color color ) {
@@ -74,22 +77,45 @@ public class StairsShape extends BasicShapes{
 			}
 		}
 	}
+	
+	@Override
+	public void Move(double stageStep) {
+		Thread t2 = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				MoveSpeed(stageStep);
+			}
+		});
+		t2.start();
+	}
+	
+	private synchronized void MoveSpeed(double stageStep) {
+		double start = y;
+		while ((y-start)<stageStep) {
+			try {
+				wait(5);
+				y++;
+				Platform.runLater(()->{
+					for (int i = 0 ; i < ShapeNums ; i++) {
+						Line temp = lineShapes[i];
+						temp.setStartY(y+StrokeWidth*i);
+						temp.setEndY(y+StrokeWidth*i);
+					}
+				});
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	@Override
 	public ArrayList<Shape> getShapesWithOppositeColor(Paint paint) {
-		// TODO Auto-generated method stub
-		return null;
+		return shapesVsColor(paint,lineShapes);
 	}
 
 	@Override
 	public Shape[] getShape() {
 		return lineShapes;
-	}
-
-	@Override
-	public void Move(double stageStep) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

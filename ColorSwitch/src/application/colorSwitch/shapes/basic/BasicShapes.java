@@ -19,4 +19,15 @@ public abstract class BasicShapes extends AppShapes{
 		default : return 0;
 		}
 	}
+	
+	protected ArrayList<Shape> shapesVsColor(Paint paint,Shape[] allShapes){
+		ArrayList<Shape> shapes = new ArrayList<Shape>();
+		for (Shape shape : allShapes) {
+			if (!shape.getStroke().equals(paint)) {
+				shapes.add(shape);
+			}
+		}
+		return shapes;
+	}
+	
 }

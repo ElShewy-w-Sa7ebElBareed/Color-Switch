@@ -34,6 +34,7 @@ public class LineShape extends BasicShapes{
 			}
 		});
 		t.start();
+		Move(100);
 	}
 	
 	private void setLine(Line line,double startX,Color color ) {
@@ -66,22 +67,44 @@ public class LineShape extends BasicShapes{
 			}
 		}
 	}
+	
+	@Override
+	public void Move(double stageStep) {
+		Thread t2 = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				MoveSpeed(stageStep);
+			}
+		});
+		t2.start();
+	}
+	
+	private synchronized void MoveSpeed(double stageStep) {
+		double start = y;
+		while ((y-start)<stageStep) {
+			try {
+				wait(5);
+				y++;
+				Platform.runLater(()->{
+					for (Line temp : lineShapes ) {
+						temp.setStartY(y);
+						temp.setEndY(y);
+					}
+				});
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 	@Override
 	public ArrayList<Shape> getShapesWithOppositeColor(Paint paint) {
-		// TODO Auto-generated method stub
-		return null;
+		return shapesVsColor(paint, lineShapes);
 	}
 
 	@Override
 	public Shape[] getShape() {
 		return lineShapes;
-	}
-
-	@Override
-	public void Move(double stageStep) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

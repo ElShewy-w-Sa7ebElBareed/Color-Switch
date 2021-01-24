@@ -102,13 +102,7 @@ public class CircleShape extends BasicShapes{
 
 	@Override
 	public ArrayList<Shape> getShapesWithOppositeColor(Paint paint) {
-		ArrayList<Shape> shapes = new ArrayList<Shape>();
-		for (Arc arc : arcShapes) {
-			if (!arc.getStroke().equals(paint)) {
-				shapes.add(arc);
-			}
-		}
-		return shapes;
+		return shapesVsColor(paint, arcShapes);
 	}
 
 	@Override
