@@ -1,4 +1,4 @@
-package application.Shapes.Additional;
+package application.colorSwitch.shapes.additional;
 
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;

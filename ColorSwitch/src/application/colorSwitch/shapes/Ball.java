@@ -1,6 +1,6 @@
-package application.Shapes;
+package application.colorSwitch.shapes;
 
-import application.Shapes.Additional.AdditionalShapes;
+import application.colorSwitch.shapes.additional.AdditionalShapes;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;

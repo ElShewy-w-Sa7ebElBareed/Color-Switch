@@ -1,13 +1,11 @@
-package application.Shapes;
+package application.colorSwitch.shapes;
 
 import java.util.ArrayList;
 
-import javafx.scene.paint.Color;
+import application.colorSwitch.data.AppData;
 import javafx.scene.shape.Shape;
 
-public abstract class AppShapes {
-
-	public Color[] ShapeColor = { Color.RED, Color.BLUE, Color.YELLOW, Color.GREEN };
+public abstract class AppShapes extends AppData {
 
 	public abstract void Move(double stageStep);
 

@@ -1,9 +1,7 @@
-package application.Shapes.Basic;
+package application.colorSwitch.shapes.basic;
 
 
 import java.util.ArrayList;
-
-import application.App;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -51,9 +49,9 @@ public class RectangleShapes extends BasicShapes {
 					rect2.getTransforms().add(rotate);
 				    rect3.getTransforms().add(rotate);
 					rect4.getTransforms().add(rotate);
-					if (CheckHit(App.ball.getShape(),getShapesWithOppositeColor(App.ball.getShape().getFill()))) {
+					/*if (CheckHit(App.ball.getShape(),getShapesWithOppositeColor(App.ball.getShape().getFill()))) {
 						System.out.println("game Over inside the class");
-					}
+					}*/
 				});
 			} catch (InterruptedException e) {
 				e.printStackTrace();

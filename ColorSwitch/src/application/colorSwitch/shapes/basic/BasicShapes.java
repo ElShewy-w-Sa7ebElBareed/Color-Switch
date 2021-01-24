@@ -1,8 +1,8 @@
-package application.Shapes.Basic;
+package application.colorSwitch.shapes.basic;
 
 import java.util.ArrayList;
 
-import application.Shapes.AppShapes;
+import application.colorSwitch.shapes.AppShapes;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
 

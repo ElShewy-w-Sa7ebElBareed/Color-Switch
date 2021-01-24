@@ -1,9 +1,7 @@
-package application.Shapes.Basic;
+package application.colorSwitch.shapes.basic;
 
 import java.util.ArrayList;
-
-import application.App;
-import application.Level;
+import application.colorSwitch.data.Level;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -11,15 +9,17 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 import javafx.scene.shape.StrokeType;
 
-public class StairsShape extends BasicShapes{
-	private final double StrokeWidth = 20,lineLength = 150;
+public class LineShape extends BasicShapes{
+	private final double StrokeWidth = 15,lineLength = 150;
 	private final int width = 400,lineNums = 4,SpeedStage = 4;
 	private int SpinSpeed;
 	private Line[] lineShapes ;
+	private double y ;
 	
-	public StairsShape (double y) {
+	public LineShape (double y) {
+		this.y = y;
 		lineShapes = new Line[lineNums];
-		this.SpinSpeed = SpeedStage * speedLevel(App.gameLevel);
+		this.SpinSpeed = SpeedStage * speedLevel(gameLevel);
 		initialize(y);
 	}
 	
@@ -35,7 +35,7 @@ public class StairsShape extends BasicShapes{
 	private void initialize(double y ){
 		for (int i = 0 ; i < lineNums;i++) {
 			lineShapes[i] = new Line();
-			setLine(lineShapes[i],width-(i+1)*lineLength,y+StrokeWidth*i,ShapeColor[i]);
+			setLine(lineShapes[i],width-(i+1)*lineLength,AppColor[i]);
 		}
 		Thread t = new Thread(new Runnable() {
 			@Override
@@ -46,7 +46,7 @@ public class StairsShape extends BasicShapes{
 		t.start();
 	}
 	
-	private void setLine(Line line,double startX,double y,Color color ) {
+	private void setLine(Line line,double startX,Color color ) {
 		line.setStartX(startX+StrokeWidth/2);
 		line.setStartY(y);
 		line.setEndX(startX+lineLength-StrokeWidth/2);

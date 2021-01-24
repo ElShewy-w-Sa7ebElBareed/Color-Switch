@@ -1,10 +1,7 @@
-package application.Shapes.Basic;
-
-import application.Level;
+package application.colorSwitch.shapes.basic;
 
 import java.util.ArrayList;
-
-import application.App;
+import application.colorSwitch.data.Level;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -25,7 +22,7 @@ public class CircleShape extends BasicShapes{
 		this.CenterX = CenterX;
 		this.CenterY = CenterY;
 		this.Radius = Radius;
-		this.SpinSpeed = speedStage * speedLevel(App.gameLevel);
+		this.SpinSpeed = speedStage * speedLevel(gameLevel);
 		arcShapes = new Arc[arcNums];
 		initialize();
 	}
@@ -42,7 +39,7 @@ public class CircleShape extends BasicShapes{
 	private void initialize() {
 		for (int i = 0 ; i < arcNums ; i++) {
 			arcShapes[i] = new Arc();
-			setArc(arcShapes[i],Angle,ShapeColor[i]);
+			setArc(arcShapes[i],Angle,AppColor[i]);
 			Angle += 360/arcNums; 
 		}
 		Thread t = new Thread(new Runnable() {
@@ -77,9 +74,9 @@ public class CircleShape extends BasicShapes{
 					for (int i = 0 ; i < arcNums ; i++) {
 						double tempAngle = arcShapes[i].getStartAngle()+SpinSpeed;
 						arcShapes[i].setStartAngle(tempAngle);
-						if (CheckHit(App.ball.getShape(),getShapesWithOppositeColor(App.ball.getShape().getFill()))) {
+						/*if (CheckHit(App.ball.getShape(),getShapesWithOppositeColor(App.ball.getShape().getFill()))) {
 							System.out.println("game Over inside the class");
-						}
+						}*/
 					}
 				});
 			} catch (InterruptedException e) {
