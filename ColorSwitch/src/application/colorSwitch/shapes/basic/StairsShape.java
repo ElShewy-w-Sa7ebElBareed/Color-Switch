@@ -11,12 +11,12 @@ import javafx.scene.shape.StrokeType;
 
 public class StairsShape extends BasicShapes{
 	private final double StrokeWidth = 20,lineLength = 150;
-	private final int width = 400,lineNums = 4,SpeedStage = 4;
+	private final int SpeedStage = 4;
 	private int SpinSpeed;
 	private Line[] lineShapes ;
 	
 	public StairsShape (double y) {
-		lineShapes = new Line[lineNums];
+		lineShapes = new Line[ShapeNums];
 		this.SpinSpeed = SpeedStage * speedLevel(gameLevel);
 		initialize(y);
 	}
@@ -31,9 +31,9 @@ public class StairsShape extends BasicShapes{
 	}
 	
 	private void initialize(double y ){
-		for (int i = 0 ; i < lineNums;i++) {
+		for (int i = 0 ; i < ShapeNums;i++) {
 			lineShapes[i] = new Line();
-			setLine(lineShapes[i],width-(i+1)*lineLength,y+StrokeWidth*i,AppColor[i]);
+			setLine(lineShapes[i],ScreenWidth-(i+1)*lineLength,y+StrokeWidth*i,AppColor[i]);
 		}
 		Thread t = new Thread(new Runnable() {
 			@Override
@@ -60,10 +60,10 @@ public class StairsShape extends BasicShapes{
 			try {
 				wait(50);
 				Platform.runLater(()->{
-					for (int i = 0 ; i < lineNums ; i++) {
+					for (int i = 0 ; i < ShapeNums ; i++) {
 						double tempStartX = lineShapes[i].getStartX()+SpinSpeed;
-						if (tempStartX >=  width) {
-							tempStartX = -200+StrokeWidth/2;
+						if (tempStartX >=  ScreenWidth) {
+							tempStartX = ScreenWidth-ShapeNums*lineLength+StrokeWidth/2;
 						}
 						lineShapes[i].setStartX(tempStartX+StrokeWidth/2);
 						lineShapes[i].setEndX(tempStartX+lineLength-StrokeWidth/2);
