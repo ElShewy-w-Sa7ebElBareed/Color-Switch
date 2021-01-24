@@ -10,7 +10,7 @@ import javafx.scene.shape.Shape;
 import javafx.scene.shape.StrokeType;
 
 public class StairsShape extends BasicShapes{
-	private final double StrokeWidth = 20,lineLength = 150;
+	private final double StrokeWidth = 15,lineLength = 150;
 	private final int SpeedStage = 4;
 	private int SpinSpeed;
 	private Line[] lineShapes ;

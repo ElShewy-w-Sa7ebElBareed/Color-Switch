@@ -90,8 +90,8 @@ public class CircleShape extends BasicShapes{
 				wait(5);
 				CenterY++;
 				Platform.runLater(()->{
-					for (int i = 0 ; i < ShapeNums ; i++) {
-						arcShapes[i].setCenterY(CenterY);
+					for (Arc temp : arcShapes) {
+						temp.setCenterY(CenterY);
 					}
 				});
 			} catch (InterruptedException e) {
