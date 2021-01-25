@@ -2,6 +2,8 @@ package application.colorSwitch.shapes.basic;
 
 
 import java.util.ArrayList;
+
+import application.colorSwitch.shapes.additional.StarShape;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -11,20 +13,24 @@ import javafx.scene.transform.Rotate;
 
 public class RectangleShapes extends BasicShapes {
 	Rectangle rect1,rect2,rect3,rect4;
+	StarShape star; 
 	int Angel = 5 ;
-	int CenterX = 200;
-	int CenterY = 150;
+	double CenterX = 200;
+	double CenterY = 150;
 	//private final int speedStage = 5 ;
 	Rectangle[] Shapes = new Rectangle[4];
-		public RectangleShapes() {
-		this.rect1 = buildRectangle(130, 80, 125, 15,Color.RED)  ;
+		public RectangleShapes(double CenterX,double CenterY) {
+		this.CenterX = CenterX;
+		this.CenterY = CenterY;
+		this.rect1 = buildRectangle(CenterX-70, CenterY-70, 125, 15,Color.RED)  ;
 		Shapes[0]= rect1;
-		this.rect2 = buildRectangle(130, 220, 140, 15,Color.BLUE)  ;
+		this.rect2 = buildRectangle(CenterX-55, CenterY+55, 125, 15,Color.BLUE)  ;
 		Shapes[1]= rect2;
-		this.rect3 = buildRectangle(255, 80, 15, 140,Color.GREEN)  ;
+		this.rect3 = buildRectangle(CenterX+55, CenterY-70, 15, 125,Color.GREEN)  ;
 		Shapes[2]= rect3;
-		this.rect4 = buildRectangle(130, 80, 15, 140,Color.YELLOW)  ;
+		this.rect4 = buildRectangle(CenterX-70, CenterY-55, 15, 125,Color.YELLOW)  ;
 		Shapes[3]= rect4;
+		star = new StarShape(CenterY);
 		Thread t = new Thread(new Runnable() {
 			@Override
 			public void run() {

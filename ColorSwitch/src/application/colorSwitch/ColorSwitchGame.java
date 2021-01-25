@@ -22,7 +22,7 @@ public class ColorSwitchGame extends AppData {
 	
 	//the next two lines must be removed
 	ArrayList<BasicShapes> levelShapes = new ArrayList<BasicShapes>();
-	public static RectangleShapes r = new RectangleShapes();
+	public static RectangleShapes r = new RectangleShapes(200,150);
 	public ColorSwitchGame() {
 		String path = "sound.mp3";
         Media pick = new Media(new File(path).toURI().toString()); // replace this with your own audio file
