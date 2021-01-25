@@ -31,7 +31,8 @@ public class ColorSwitchGame extends AppData {
 		Group root = new Group(mediaView);  
 		gameScene = new Scene(root,ScreenWidth,ScreenLength);
 		AppBall = new Ball(gameScene, 200, 600, 10, Color.RED);
-		Image background = new Image("https://orsted.com/-/media/WWW/Images/Corp/Campaign/SpaceSafari/space-safari-background.png");
+		String path2 = "background.jpeg";
+		Image background = new Image(new File(path2).toURI().toString());
 		ImageView vm = new ImageView(background);
 		root.getChildren().addAll(vm);
 		levelShapes.add(new CircleShape(ScreenWidth/2,150,90));
