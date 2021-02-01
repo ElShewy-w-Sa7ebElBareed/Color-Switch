@@ -18,7 +18,7 @@ public class ColorSwitchGame extends AppData {
 
 	private Scene gameScene;
 	
-	//the next two lines must be removed
+	static //the next two lines must be removed
 	ArrayList<BasicShapes> levelShapes = new ArrayList<BasicShapes>();
 	public static RectangleShapes r = new RectangleShapes(200,150);
 	public ColorSwitchGame() {
@@ -44,6 +44,12 @@ public class ColorSwitchGame extends AppData {
 		root.getChildren().addAll(r.getShape());
 		// Play the media once the stage is shown
         player.play();
+	}
+	
+	public static void move(double stageStep) {
+		for(BasicShapes s : levelShapes) {
+			s.Move(stageStep);
+		}
 	}
 
 	public Scene getGameScene() {
