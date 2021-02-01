@@ -49,7 +49,7 @@ public class RectangleShapes extends BasicShapes {
 	private synchronized void Spin() {
 		while (true) {
 			try {
-				wait(50);
+				wait(10);
 				Platform.runLater(()->{
 					rotate.setAngle(Angel);  
 				    rotate.setPivotX(CenterX);  
