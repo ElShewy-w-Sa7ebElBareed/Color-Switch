@@ -20,7 +20,7 @@ public class ColorSwitchGame extends AppData {
 	
 	//the next two lines must be removed
 	ArrayList<BasicShapes> levelShapes = new ArrayList<BasicShapes>();
-	public static RectangleShapes r = new RectangleShapes();
+	public static RectangleShapes r = new RectangleShapes(200,150);
 	public ColorSwitchGame() {
 		String path = "sound.mp3";
         Media pick = new Media(new File(path).toURI().toString()); // replace this with your own audio file
@@ -29,7 +29,8 @@ public class ColorSwitchGame extends AppData {
 		Group root = new Group(mediaView);  
 		gameScene = new Scene(root,ScreenWidth,ScreenLength);
 		AppBall = new Ball(gameScene, 200, 600, 10, Color.RED);
-		Image background = new Image("https://orsted.com/-/media/WWW/Images/Corp/Campaign/SpaceSafari/space-safari-background.png");
+		String path2 = "background.jpeg";
+		Image background = new Image(new File(path2).toURI().toString());
 		ImageView vm = new ImageView(background);
 		root.getChildren().addAll(vm);
 		levelShapes.add(new CircleShape(ScreenWidth/2,150,90));

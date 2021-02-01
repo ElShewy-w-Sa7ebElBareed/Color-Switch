@@ -1,10 +1,13 @@
 package application.colorSwitch.shapes;
 
+import java.io.File;
+
 import application.colorSwitch.shapes.additional.AdditionalShapes;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Shape;
@@ -32,6 +35,9 @@ public class Ball extends AdditionalShapes {
 			@Override
 			public void handle(MouseEvent e) {
 				//System.out.println("before");
+				String path = "Click.mp3";
+				AudioClip ALERT_AUDIOCLIP = new AudioClip(new File(path).toURI().toString());
+				ALERT_AUDIOCLIP.play();
 				clicks++;
 				Thread t2 = new Thread(new Runnable() {
 
