@@ -3,6 +3,7 @@ package application.colorSwitch.shapes.basic;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import application.colorSwitch.shapes.additional.ChangeColorBall;
 import application.colorSwitch.shapes.additional.StarShape;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
@@ -14,20 +15,20 @@ import javafx.scene.shape.StrokeType;
 
 public class CircleShape extends BasicShapes{
 	private Arc[] arcShapes;
-	private StarShape star; 
+	private StarShape star;
+	private ChangeColorBall ColoredBall; 
 	private int SpinSpeed;
-	private double CenterX, CenterY, Radius,Angle = 0;
+	private double CenterX = ScreenWidth/2 , CenterY, Radius = 80,Angle = 0;
 	private final int speedStage = 5 ;
 	private final double StrokeWidth = 15;
 	private final Color BackgroundColor = Color.BLACK;
 	
-	public CircleShape(double CenterX,double CenterY,double Radius) {
-		this.CenterX = CenterX;
-		this.CenterY = CenterY;
-		this.Radius = Radius;
+	public CircleShape(double CenterY) {
+		this.CenterY = CenterY+45;
 		this.SpinSpeed = speedStage * speedLevel();
 		arcShapes = new Arc[ShapeNums];
-		star = new StarShape(CenterY);
+		star = new StarShape(this.CenterY);
+		ColoredBall = new ChangeColorBall(this.CenterY - Radius-30);
 		initialize();
 	}
 	
@@ -44,7 +45,7 @@ public class CircleShape extends BasicShapes{
 			}
 		});
 		t.start();
-		Move(100);
+		//Move(100);
 	}
 	
 	private void setArc(Arc arc,double Angle,Color color) {
@@ -86,6 +87,7 @@ public class CircleShape extends BasicShapes{
 			}
 		});
 		star.Move(stageStep);
+		ColoredBall.Move(stageStep);
 		t2.start();
 	}
 	
@@ -115,7 +117,14 @@ public class CircleShape extends BasicShapes{
 	public Shape[] getShape() {
 		ArrayList<Shape> shapes = new ArrayList<>(Arrays.asList(arcShapes));
 		shapes.add(star.getShape());
+		shapes.add(ColoredBall.getShape());
 		return shapes.toArray(new Shape[0]);
+	}
+
+	@Override
+	public double getY() {
+		// TODO Auto-generated method stub
+		return this.CenterY-45;
 	}
 
 }

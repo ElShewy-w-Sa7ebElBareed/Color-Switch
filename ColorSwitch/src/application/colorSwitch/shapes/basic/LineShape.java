@@ -3,6 +3,7 @@ package application.colorSwitch.shapes.basic;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import application.colorSwitch.shapes.additional.ChangeColorBall;
 import application.colorSwitch.shapes.additional.StarShape;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
@@ -17,17 +18,19 @@ public class LineShape extends BasicShapes{
 	private int SpinSpeed;
 	private Line[] lineShapes ;
 	private StarShape star;
+	private ChangeColorBall ColoredBall;
 	private double y ;
 	
 	public LineShape (double y) {
-		this.y = y;
+		this.y = y+105;
 		lineShapes = new Line[ShapeNums];
 		this.SpinSpeed = SpeedStage * speedLevel();
-		star = new StarShape(y-2*StrokeWidth);
-		initialize(y);
+		star = new StarShape(this.y-2*StrokeWidth);
+		ColoredBall = new ChangeColorBall(y);
+		initialize();
 	}
 	
-	private void initialize(double y ){
+	private void initialize(){
 		for (int i = 0 ; i < ShapeNums;i++) {
 			lineShapes[i] = new Line();
 			setLine(lineShapes[i],ScreenWidth-(i+1)*lineLength,AppColor[i]);
@@ -39,7 +42,7 @@ public class LineShape extends BasicShapes{
 			}
 		});
 		t.start();
-		Move(100);
+		//Move(100);
 	}
 	
 	private void setLine(Line line,double startX,Color color ) {
@@ -82,6 +85,7 @@ public class LineShape extends BasicShapes{
 			}
 		});
 		star.Move(stageStep);
+		ColoredBall.Move(stageStep);
 		t2.start();
 	}
 	
@@ -112,7 +116,14 @@ public class LineShape extends BasicShapes{
 	public Shape[] getShape() {
 		ArrayList<Shape> shapes = new ArrayList<>(Arrays.asList(lineShapes));
 		shapes.add(star.getShape());
+		shapes.add(ColoredBall.getShape());
 		return shapes.toArray(new Shape[0]);
+	}
+
+	@Override
+	public double getY() {
+		// TODO Auto-generated method stub
+		return this.y-105;
 	}
 
 }

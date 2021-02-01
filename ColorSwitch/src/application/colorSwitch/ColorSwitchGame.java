@@ -20,7 +20,7 @@ public class ColorSwitchGame extends AppData {
 	
 	static //the next two lines must be removed
 	ArrayList<BasicShapes> levelShapes = new ArrayList<BasicShapes>();
-	public static RectangleShapes r = new RectangleShapes(200,150);
+	//public static RectangleShapes r = new RectangleShapes(150);
 	public ColorSwitchGame() {
 		String path = "sound.mp3";
         Media pick = new Media(new File(path).toURI().toString()); // replace this with your own audio file
@@ -33,15 +33,15 @@ public class ColorSwitchGame extends AppData {
 		Image background = new Image(new File(path2).toURI().toString());
 		ImageView vm = new ImageView(background);
 		root.getChildren().addAll(vm);
-		levelShapes.add(new CircleShape(ScreenWidth/2,150,90));
-		levelShapes.add(new LineShape(250));
-		levelShapes.add(new StairsShape(400));
+		levelShapes.add(new CircleShape(125));
+		levelShapes.add(new LineShape(375));
+		//levelShapes.add(new StairsShape(125));
 	    for (BasicShapes shape : levelShapes) {
 	    	root.getChildren().addAll(shape.getShape());
 	    }
 	    //root.getChildren().addAll(new StarShape(150).getShape(),new ChangeColorBall(ScreenWidth/2, 400, 20).getShape());
 		root.getChildren().addAll(AppBall.getShape());
-		root.getChildren().addAll(r.getShape());
+		//root.getChildren().addAll(r.getShape());
 		// Play the media once the stage is shown
         player.play();
 	}

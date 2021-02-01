@@ -10,6 +10,7 @@ public abstract class BasicShapes extends AppShapes{
 	protected final int ShapeNums = 4;
 	public abstract ArrayList<Shape> getShapesWithOppositeColor(Paint paint);
 	public abstract Shape[] getShape();
+	public abstract double getY();
 	
 	protected int speedLevel() {
 		switch(gameLevel) {
