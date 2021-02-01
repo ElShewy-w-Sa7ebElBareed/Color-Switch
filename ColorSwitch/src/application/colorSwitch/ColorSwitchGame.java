@@ -36,8 +36,8 @@ public class ColorSwitchGame extends AppData {
 		Image background = new Image(new File(path2).toURI().toString());
 		ImageView vm = new ImageView(background);
 		root.getChildren().addAll(vm);
-		levelShapes.add(new CircleShape(375));
-		levelShapes.add(new LineShape(125));
+		levelShapes.add(new RectangleShapes(375));
+		levelShapes.add(new CircleShape(125));
 		//levelShapes.add(new StairsShape(125));
 	    for (BasicShapes shape : levelShapes) {
 	    	root.getChildren().addAll(shape.getShape());
