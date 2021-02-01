@@ -20,7 +20,7 @@ import javafx.scene.paint.Color;
 public class ColorSwitchGame extends AppData {
 
 	private Scene gameScene;
-	
+	private int pointer = 0 ;
 	static //the next two lines must be removed
 	ArrayList<BasicShapes> levelShapes = new ArrayList<BasicShapes>();
 	//public static RectangleShapes r = new RectangleShapes(150);
@@ -64,11 +64,23 @@ public class ColorSwitchGame extends AppData {
 	    int int_random = rand.nextInt(upperbound);
 	    double y = levelShapes.get(levelShapes.size()-1).getY();
 	    y-=250;
-		BasicShapes a = Factory.getShape(2,y);
+		BasicShapes a = Factory.getShape(int_random,y);
 		root.getChildren().addAll(a.getShape());
 		levelShapes.add(a);
 	}
-	
+	 
+	public void hit() {
+		if (AppBall.CheckHit(levelShapes.get(pointer).getShapesWithOppositeColor(AppBall.getShape().getFill()))) {
+			System.out.println("game Over inside the class");
+		}
+		if(AppBall.CheckHit(levelShapes.get(pointer).getStar())) {
+			System.out.println("score ++");
+		}
+		if(AppBall.CheckHit(levelShapes.get(pointer).getBall())) {
+			AppBall.changeColor();
+		}
+		
+	}
 	
 	public Scene getGameScene() {
 		return gameScene;

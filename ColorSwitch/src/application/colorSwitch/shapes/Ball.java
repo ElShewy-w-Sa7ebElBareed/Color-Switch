@@ -1,6 +1,8 @@
 package application.colorSwitch.shapes;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Random;
 
 import application.colorSwitch.ColorSwitchGame;
 import application.colorSwitch.shapes.additional.AdditionalShapes;
@@ -152,6 +154,29 @@ public class Ball extends AdditionalShapes {
 	public void Move(double stageStep) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public boolean CheckHit( ArrayList<Shape> s2) {
+		for (Shape s : s2) {
+			Shape intersect = Shape.intersect(circle, s);
+			if (intersect.getBoundsInLocal().getWidth() != -1) {
+				System.out.println("Game Over");
+				return true;
+			}	
+		}
+		return false;
+	}
+	public void changeColor () {
+		Random rand = new Random(); //instance of random class
+	    int upperbound = 4;
+	        //generate random values from 0-3
+	    int int_random = rand.nextInt(upperbound);
+		Color c = AppColor[int_random];
+		while(c == circle.getFill()) {
+			 int_random = rand.nextInt(upperbound);
+			 c = AppColor[int_random];
+		}
+		circle.setFill(c);
 	}
 	
 }

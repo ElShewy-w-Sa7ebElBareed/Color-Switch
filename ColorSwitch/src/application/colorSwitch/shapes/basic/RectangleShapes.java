@@ -147,5 +147,19 @@ public class RectangleShapes extends BasicShapes {
 		// TODO Auto-generated method stub
 		return this.CenterY-45;
 	}
+	
+	@Override
+	public ArrayList<Shape> getStar() {
+		ArrayList<Shape> s = new ArrayList<Shape>();
+		s.add(star.getShape());
+		return s;
+	}
+	
+	@Override
+	public ArrayList<Shape> getBall() {
+		ArrayList<Shape> s = new ArrayList<Shape>();
+		s.add(ColoredBall.getShape());
+		return s;
+	}
 
 }
