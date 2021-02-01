@@ -8,6 +8,6 @@ public abstract class AppData {
 	protected final double ScreenLength = 800, ScreenWidth = 400;
 	protected Level gameLevel = Level.EASY;
 	protected Color[] AppColor = { Color.RED, Color.BLUE, Color.YELLOW, Color.GREEN };
-	protected Ball AppBall;
+	protected static Ball AppBall;
 
 }

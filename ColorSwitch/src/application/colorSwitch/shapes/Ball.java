@@ -71,6 +71,7 @@ public class Ball extends AdditionalShapes {
 				Platform.runLater(()->{
 					circle.setCenterY(circle.getCenterY() - 2) ;
 				});
+				ColorSwitchGame.hit();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -80,7 +81,11 @@ public class Ball extends AdditionalShapes {
 			while(d>0) {
 				try {
 					ColorSwitchGame.move(d);
-					LOCK.wait((long) (10*d/2));
+					for (int i = 0 ; i< d/2 ; i++) {
+						LOCK.wait(10);
+						ColorSwitchGame.hit();
+					}
+					//LOCK.wait((long) (10*d/2));
 					//move
 					d-=d;
 				} catch (InterruptedException e) {
@@ -166,17 +171,25 @@ public class Ball extends AdditionalShapes {
 		}
 		return false;
 	}
+	
+	
 	public void changeColor () {
+		circle.setFill(generateRandomColor());
+	}
+	
+	
+	private Color generateRandomColor() {
 		Random rand = new Random(); //instance of random class
 	    int upperbound = 4;
 	        //generate random values from 0-3
 	    int int_random = rand.nextInt(upperbound);
 		Color c = AppColor[int_random];
-		while(c == circle.getFill()) {
+		while(c.equals(circle.getFill())) {
 			 int_random = rand.nextInt(upperbound);
 			 c = AppColor[int_random];
 		}
-		circle.setFill(c);
+		return c;
 	}
+	
 	
 }
