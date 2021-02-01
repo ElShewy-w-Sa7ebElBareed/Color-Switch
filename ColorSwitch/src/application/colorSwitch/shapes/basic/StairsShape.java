@@ -99,8 +99,8 @@ public class StairsShape extends BasicShapes{
 		double start = y;
 		while ((y-start)<stageStep) {
 			try {
-				wait(5);
-				y++;
+				wait(10);
+				y+=2;
 				Platform.runLater(()->{
 					for (int i = 0 ; i < ShapeNums ; i++) {
 						Line temp = lineShapes[i];

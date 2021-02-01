@@ -62,7 +62,7 @@ public class Ball extends AdditionalShapes {
 		//System.out.println("In");
 		Top = true;
 		double start = circle.getCenterY() ;
-		while (circle.getCenterY() > 450 && start-(circle.getCenterY()) < upDistance) {
+		while (circle.getCenterY() > 500 && start-(circle.getCenterY()) < upDistance) {
 			try {
 				LOCK.wait(10);
 				
@@ -73,7 +73,7 @@ public class Ball extends AdditionalShapes {
 				e.printStackTrace();
 			}
 		}
-		if(circle.getCenterY() <= 450) {
+		if(circle.getCenterY() <= 500) {
 			double d = upDistance - (start-(circle.getCenterY()));
 			while(d>0) {
 				try {
@@ -129,7 +129,7 @@ public class Ball extends AdditionalShapes {
 	private void Down(int downDistance, Circle circle) {
 		synchronized (LOCK) 
         { 
-		while (circle.getCenterY() < 600 && !Top) {
+		while (circle.getCenterY() < 750 && !Top) {
 			try {
 				LOCK.wait(20);
 				

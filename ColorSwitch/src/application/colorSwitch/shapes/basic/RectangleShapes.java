@@ -2,6 +2,7 @@ package application.colorSwitch.shapes.basic;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import application.colorSwitch.shapes.additional.StarShape;
 import javafx.application.Platform;
@@ -83,6 +84,7 @@ public class RectangleShapes extends BasicShapes {
 				MoveSpeed(stageStep);
 			}
 		});
+		star.Move(stageStep);
 		t2.start();
 	}
 	
@@ -106,7 +108,9 @@ public class RectangleShapes extends BasicShapes {
 	
 	@Override
 	public Shape[] getShape() {
-		return Shapes;
+		ArrayList<Shape> shapes = new ArrayList<>(Arrays.asList(Shapes));
+		shapes.add(star.getShape());
+		return shapes.toArray(new Shape[0]);
 	}
 
 	/*@Override

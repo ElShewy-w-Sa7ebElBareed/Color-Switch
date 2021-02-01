@@ -93,8 +93,8 @@ public class CircleShape extends BasicShapes{
 		double start = CenterY;
 		while ((CenterY-start)<stageStep) {
 			try {
-				wait(5);
-				CenterY++;
+				wait(10);
+				CenterY=CenterY+2;
 				Platform.runLater(()->{
 					for (Arc temp : arcShapes) {
 						temp.setCenterY(CenterY);

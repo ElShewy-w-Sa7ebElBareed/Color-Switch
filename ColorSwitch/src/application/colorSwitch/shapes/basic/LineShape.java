@@ -89,8 +89,8 @@ public class LineShape extends BasicShapes{
 		double start = y;
 		while ((y-start)<stageStep) {
 			try {
-				wait(5);
-				y++;
+				wait(10);
+				y+=2;
 				Platform.runLater(()->{
 					for (Line temp : lineShapes ) {
 						temp.setStartY(y);
