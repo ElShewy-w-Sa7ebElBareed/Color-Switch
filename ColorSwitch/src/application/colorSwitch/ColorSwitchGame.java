@@ -2,7 +2,10 @@ package application.colorSwitch;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Random;
+
 import application.colorSwitch.data.AppData;
+import application.colorSwitch.data.Factory;
 import application.colorSwitch.shapes.Ball;
 import application.colorSwitch.shapes.basic.*;
 import javafx.scene.Group;
@@ -33,12 +36,20 @@ public class ColorSwitchGame extends AppData {
 		Image background = new Image(new File(path2).toURI().toString());
 		ImageView vm = new ImageView(background);
 		root.getChildren().addAll(vm);
+<<<<<<< HEAD
 		levelShapes.add(new CircleShape(375));
 		levelShapes.add(new LineShape(125));
 		//levelShapes.add(new StairsShape(125));
 	    for (BasicShapes shape : levelShapes) {
+=======
+		/*levelShapes.add(new CircleShape(ScreenWidth/2,150,90));
+		levelShapes.add(new LineShape(250));
+		levelShapes.add(new StairsShape(400));*/
+	    /*for (BasicShapes shape : levelShapes) {
+>>>>>>> branch 'master' of https://github.com/ElShewy-w-Sa7ebElBareed/Color-Switch.git
 	    	root.getChildren().addAll(shape.getShape());
-	    }
+	    }*/
+		generate(root);
 	    //root.getChildren().addAll(new StarShape(150).getShape(),new ChangeColorBall(ScreenWidth/2, 400, 20).getShape());
 		root.getChildren().addAll(AppBall.getShape());
 		//root.getChildren().addAll(r.getShape());
@@ -51,7 +62,19 @@ public class ColorSwitchGame extends AppData {
 			s.Move(stageStep);
 		}
 	}
-
+	
+	
+	public static void generate(Group root) {
+		Random rand = new Random(); //instance of random class
+	    int upperbound = 4;
+	        //generate random values from 0-3
+	    int int_random = rand.nextInt(upperbound);
+		BasicShapes a = Factory.getShape(int_random);
+		root.getChildren().addAll(a.getShape());
+		levelShapes.add(a);
+	}
+	
+	
 	public Scene getGameScene() {
 		return gameScene;
 	}
