@@ -36,19 +36,12 @@ public class ColorSwitchGame extends AppData {
 		Image background = new Image(new File(path2).toURI().toString());
 		ImageView vm = new ImageView(background);
 		root.getChildren().addAll(vm);
-<<<<<<< HEAD
 		levelShapes.add(new CircleShape(375));
 		levelShapes.add(new LineShape(125));
 		//levelShapes.add(new StairsShape(125));
 	    for (BasicShapes shape : levelShapes) {
-=======
-		/*levelShapes.add(new CircleShape(ScreenWidth/2,150,90));
-		levelShapes.add(new LineShape(250));
-		levelShapes.add(new StairsShape(400));*/
-	    /*for (BasicShapes shape : levelShapes) {
->>>>>>> branch 'master' of https://github.com/ElShewy-w-Sa7ebElBareed/Color-Switch.git
 	    	root.getChildren().addAll(shape.getShape());
-	    }*/
+	    }
 		generate(root);
 	    //root.getChildren().addAll(new StarShape(150).getShape(),new ChangeColorBall(ScreenWidth/2, 400, 20).getShape());
 		root.getChildren().addAll(AppBall.getShape());
@@ -69,7 +62,9 @@ public class ColorSwitchGame extends AppData {
 	    int upperbound = 4;
 	        //generate random values from 0-3
 	    int int_random = rand.nextInt(upperbound);
-		BasicShapes a = Factory.getShape(int_random);
+	    double y = levelShapes.get(levelShapes.size()-1).getY();
+	    y-=250;
+		BasicShapes a = Factory.getShape(int_random,y);
 		root.getChildren().addAll(a.getShape());
 		levelShapes.add(a);
 	}
