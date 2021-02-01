@@ -38,7 +38,7 @@ public class RectangleShapes extends BasicShapes {
 			}
 		});
 		t.start();
-		MoveWithSpeed(100);
+		Move(100);
 	} 
 	
     Rotate rotate = new Rotate();  
@@ -76,7 +76,7 @@ public class RectangleShapes extends BasicShapes {
 	    	return rect;
 	    }
 
-	public void MoveWithSpeed(double stageStep) {
+	public void Move(double stageStep) {
 		Thread t2 = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -91,11 +91,11 @@ public class RectangleShapes extends BasicShapes {
 		while ((CenterY-start)<stageStep) {
 			try {
 				wait(10);
-				CenterY++;
+				CenterY=CenterY+2;
 				Platform.runLater(()->{
 					for (int i = 0 ; i < 4 ; i++) {
 						
-						Shapes[i].setY(Shapes[i].getY()+1);
+						Shapes[i].setY(Shapes[i].getY()+2);
 					}
 				});
 			} catch (InterruptedException e) {
@@ -109,7 +109,7 @@ public class RectangleShapes extends BasicShapes {
 		return Shapes;
 	}
 
-	@Override
+	/*@Override
 	public void Move(double stageStep) {
 		CenterY+=stageStep;
 		Platform.runLater(()->{
@@ -118,7 +118,7 @@ public class RectangleShapes extends BasicShapes {
 			}
 		});
 		
-	}
+	}*/
 
 
 	@Override
