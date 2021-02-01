@@ -4,8 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import application.colorSwitch.data.AppData;
 import application.colorSwitch.shapes.Ball;
-import application.colorSwitch.shapes.additional.ChangeColorBall;
-import application.colorSwitch.shapes.additional.StarShape;
 import application.colorSwitch.shapes.basic.*;
 import javafx.scene.Group;
 import javafx.scene.Scene;
