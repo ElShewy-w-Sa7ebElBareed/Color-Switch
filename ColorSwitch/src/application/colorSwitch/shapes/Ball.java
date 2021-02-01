@@ -70,8 +70,9 @@ public class Ball extends AdditionalShapes {
 				
 				Platform.runLater(()->{
 					circle.setCenterY(circle.getCenterY() - 2) ;
+					ColorSwitchGame.hit();
 				});
-				ColorSwitchGame.hit();
+				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -83,7 +84,9 @@ public class Ball extends AdditionalShapes {
 					ColorSwitchGame.move(d);
 					for (int i = 0 ; i< d/2 ; i++) {
 						LOCK.wait(10);
+						Platform.runLater(()->{
 						ColorSwitchGame.hit();
+						});
 					}
 					//LOCK.wait((long) (10*d/2));
 					//move
