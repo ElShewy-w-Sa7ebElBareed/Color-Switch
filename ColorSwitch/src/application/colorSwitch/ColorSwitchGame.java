@@ -64,7 +64,7 @@ public class ColorSwitchGame extends AppData {
 	    int int_random = rand.nextInt(upperbound);
 	    double y = levelShapes.get(levelShapes.size()-1).getY();
 	    y-=250;
-		BasicShapes a = Factory.getShape(int_random,y);
+		BasicShapes a = Factory.getShape(2,y);
 		root.getChildren().addAll(a.getShape());
 		levelShapes.add(a);
 	}

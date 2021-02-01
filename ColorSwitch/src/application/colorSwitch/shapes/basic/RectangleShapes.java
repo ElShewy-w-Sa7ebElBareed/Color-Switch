@@ -24,16 +24,16 @@ public class RectangleShapes extends BasicShapes {
 	Rectangle[] Shapes = new Rectangle[4];
 		public RectangleShapes(double CenterY) {
 		this.CenterY = CenterY+45;
-		this.rect1 = buildRectangle(CenterX-70, this.CenterY-70, 125, 15,Color.RED)  ;
+		this.rect1 = buildRectangle(CenterX-70, CenterY-70, 125, 15,Color.RED)  ;
 		Shapes[0]= rect1;
-		this.rect2 = buildRectangle(CenterX-55, this.CenterY+55, 125, 15,Color.BLUE)  ;
+		this.rect2 = buildRectangle(CenterX-55, CenterY+55, 125, 15,Color.BLUE)  ;
 		Shapes[1]= rect2;
-		this.rect3 = buildRectangle(CenterX+55, this.CenterY-70, 15, 125,Color.GREEN)  ;
+		this.rect3 = buildRectangle(CenterX+55, CenterY-70, 15, 125,Color.GREEN)  ;
 		Shapes[2]= rect3;
-		this.rect4 = buildRectangle(CenterX-70, this.CenterY-55, 15, 125,Color.YELLOW)  ;
+		this.rect4 = buildRectangle(CenterX-70, CenterY-55, 15, 125,Color.YELLOW)  ;
 		Shapes[3]= rect4;
-		star = new StarShape(CenterY);
-		ColoredBall = new ChangeColorBall(this.CenterY - 90);
+		star = new StarShape(this.CenterY);
+		ColoredBall = new ChangeColorBall(CenterY - 45);
 		Thread t = new Thread(new Runnable() {
 			@Override
 			public void run() {
@@ -41,7 +41,7 @@ public class RectangleShapes extends BasicShapes {
 			}
 		});
 		t.start();
-		Move(100);
+		//Move(100);
 	} 
 	
     Rotate rotate = new Rotate();  
@@ -113,6 +113,7 @@ public class RectangleShapes extends BasicShapes {
 	public Shape[] getShape() {
 		ArrayList<Shape> shapes = new ArrayList<>(Arrays.asList(Shapes));
 		shapes.add(star.getShape());
+		shapes.add(ColoredBall.getShape());
 		return shapes.toArray(new Shape[0]);
 	}
 
