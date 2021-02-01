@@ -2,6 +2,7 @@ package application.colorSwitch.shapes;
 
 import java.io.File;
 
+import application.colorSwitch.ColorSwitchGame;
 import application.colorSwitch.shapes.additional.AdditionalShapes;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
@@ -76,6 +77,7 @@ public class Ball extends AdditionalShapes {
 			double d = upDistance - (start-(circle.getCenterY()));
 			while(d>0) {
 				try {
+					ColorSwitchGame.move(d);
 					LOCK.wait((long) (10*d/2));
 					//move
 					d-=d;
