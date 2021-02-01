@@ -25,8 +25,8 @@ public class LineShape extends BasicShapes{
 		this.y = y+105;
 		lineShapes = new Line[ShapeNums];
 		this.SpinSpeed = SpeedStage * speedLevel();
-		star = new StarShape(this.y-2*StrokeWidth);
-		ColoredBall = new ChangeColorBall(y);
+		star = new StarShape(this.y-3*StrokeWidth);
+		ColoredBall = new ChangeColorBall(y-15);
 		initialize();
 	}
 	
