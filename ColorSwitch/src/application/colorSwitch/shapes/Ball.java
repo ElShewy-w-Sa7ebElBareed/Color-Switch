@@ -16,6 +16,7 @@ public class Ball extends AdditionalShapes {
 	boolean Top = false;
 	int clicks=0;
 	Object LOCK = new Object();
+	//Object LOCK2 = new Object();
 	private Circle circle;
 	public Ball(Scene scene,double CenterX, double centerY, double raduis,Color color) {
 		circle=buildCircle(CenterX, centerY, raduis, color);
@@ -60,7 +61,7 @@ public class Ball extends AdditionalShapes {
 		//System.out.println("In");
 		Top = true;
 		double start = circle.getCenterY() ;
-		while (start-(circle.getCenterY()) < upDistance) {
+		while (circle.getCenterY() > 450 && start-(circle.getCenterY()) < upDistance) {
 			try {
 				LOCK.wait(10);
 				
@@ -69,6 +70,18 @@ public class Ball extends AdditionalShapes {
 				});
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+			}
+		}
+		if(circle.getCenterY() <= 450) {
+			double d = upDistance - (start-(circle.getCenterY()));
+			while(d>0) {
+				try {
+					LOCK.wait((long) (10*d/2));
+					//move
+					d-=d;
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		//LOCK.notify();
