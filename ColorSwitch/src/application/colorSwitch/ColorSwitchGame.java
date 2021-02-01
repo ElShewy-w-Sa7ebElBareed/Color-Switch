@@ -28,7 +28,7 @@ public class ColorSwitchGame extends AppData {
         MediaView mediaView = new MediaView(player);
 		Group root = new Group(mediaView);  
 		gameScene = new Scene(root,ScreenWidth,ScreenLength);
-		AppBall = new Ball(gameScene, 200, 600, 10, Color.RED);
+		AppBall = new Ball(gameScene, 200, 650, 10, Color.RED);
 		String path2 = "background.jpeg";
 		Image background = new Image(new File(path2).toURI().toString());
 		ImageView vm = new ImageView(background);
